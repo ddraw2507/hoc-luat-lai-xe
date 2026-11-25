@@ -20,6 +20,13 @@ export function normalize(obj) {
   const d = defaults();
   if (!obj || typeof obj !== 'object' || Array.isArray(obj)) return d;
   const o = { ...d, ...obj, settings: { ...d.settings, ...(obj.settings || {}) } };
+  // dữ liệu nhập tay / bản cũ có thể sai kiểu → ép về kiểu đúng để màn hình không vỡ
+  const st = o.settings;
+  const num = (v, lo, hi, dflt) => (Number.isFinite(Number(v)) && v !== null && v !== '' ? Math.min(hi, Math.max(lo, Number(v))) : dflt);
+  st.rate = num(st.rate, 0.8, 1.4, d.settings.rate);
+  st.fontSize = Math.round(num(st.fontSize, 15, 22, d.settings.fontSize));
+  for (const k of ['examDate', 'voice']) if (typeof st[k] !== 'string') st[k] = '';
+  if (st.examId !== null && typeof st.examId !== 'string') st.examId = null;
   for (const k of ['learned', 'scroll', 'stats', 'stars']) if (!o[k] || typeof o[k] !== 'object') o[k] = {};
   if (!Array.isArray(o.history)) o.history = [];
   o.history = o.history.slice(0, 50);

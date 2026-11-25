@@ -1,6 +1,6 @@
 // Service worker: precache app shell + 3 file JSON + mọi ảnh liệt kê trong questions.json (đọc lúc install).
 // Đổi CACHE_VERSION mỗi khi thay code hoặc dữ liệu để máy người dùng tải bản mới.
-const CACHE_VERSION = 'v4';
+const CACHE_VERSION = 'v5';
 const CACHE = 'hlx-' + CACHE_VERSION;
 
 const SHELL = [

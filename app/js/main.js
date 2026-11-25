@@ -21,6 +21,8 @@ route('/thong-ke', stats, 'tk');
 route('/cai-dat', settings, '');
 
 document.addEventListener('routechange', (e) => {
+  // hộp thoại / bảng trượt của màn trước (vd hết giờ thi khi đang mở "Lưới câu") không được nằm đè màn mới
+  document.querySelectorAll('body > .overlay').forEach((o) => o.remove());
   document.querySelectorAll('.tabbar a').forEach((a) => {
     a.classList.toggle('active', a.dataset.tab === e.detail.tab);
   });
@@ -41,9 +43,11 @@ if ('serviceWorker' in navigator) {
       });
     });
   }).catch(() => { /* chạy được không cần SW */ });
+  // lần cài đầu tiên SW mới chiếm quyền (clients.claim) cũng bắn controllerchange — không cần tải lại khi đó
+  const hadController = !!navigator.serviceWorker.controller;
   let reloading = false;
   navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if (reloading) return;
+    if (reloading || !hadController) return;
     reloading = true;
     location.reload();
   });

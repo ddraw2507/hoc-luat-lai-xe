@@ -29,9 +29,9 @@ export function fold(s) {
 const ALLOWED = new Set(['P', 'OL', 'UL', 'LI', 'B', 'I', 'H3', 'H4', 'TABLE', 'TBODY', 'THEAD', 'TR', 'TD', 'TH', 'IMG', 'BR']);
 
 function safeSrc(src) {
-  if (!src) return null;
-  if (/^[a-z][a-z0-9+.-]*:/i.test(src) || src.startsWith('/')) return null;
-  return src;
+  // chỉ nhận đường dẫn tương đối đơn giản (vd "img/q001.webp"): không scheme, không "/" hay "\" đầu, không khoảng trắng
+  const s = (src || '').trim();
+  return /^(?![/\\])[\w./-]+$/.test(s) && !s.includes('//') ? s : null;
 }
 
 /** Lọc HTML theo whitelist: thẻ lạ bị bỏ (giữ chữ bên trong), mọi thuộc tính bị bỏ trừ src/alt của <img>. */

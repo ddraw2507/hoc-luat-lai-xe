@@ -39,7 +39,11 @@ export async function examMenu(el) {
   };
   drawList();
   el.append(h('h2', {}, 'Chọn cấu trúc đề'), list,
-    h('button', { class: 'btn primary block', onclick: () => {
+    h('button', { class: 'btn primary block', onclick: async () => {
+      if (store.get().exam && !(await confirmBox('Đang có một đề chưa nộp. Bỏ đề đó và làm đề mới?', 'Làm đề mới', 'Giữ đề cũ'))) {
+        go('/thi/lam');
+        return;
+      }
       const s = data.exam.structures.find((x) => x.id === chosen);
       const qs = generateExam(data.questions, s);
       if (!qs.length) return;
@@ -98,9 +102,9 @@ export async function examRun(el) {
   };
   timer = setInterval(tick, 1000);
   // iOS tạm dừng timer khi app ở nền: kiểm tra lại khi quay lại
+  if (ex.endAt - Date.now() <= 0) { submit(); return; }
   const vis = () => { if (!document.hidden) tick(); };
   document.addEventListener('visibilitychange', vis);
-  if (ex.endAt - Date.now() <= 0) { submit(); return; }
 
   const body = h('div', {});
   const draw = () => {

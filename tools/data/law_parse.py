@@ -22,6 +22,8 @@ CENTER_X = 150
 RE_ARTICLE = re.compile(r"^Điều\s+(\d+)\.\s*(.*)$")
 RE_CHAPTER = re.compile(r"^Chương\s+([IVXLC]+)\s*$")
 RE_SECTION = re.compile(r"^Mục\s+(\d+)\s*$")
+RE_UNIT_END = re.compile(r"\b(?:cm|dm|km|m)$")
+SUPERSCRIPT = {"2": "²", "3": "³"}
 
 
 def nfc(s):
@@ -43,7 +45,12 @@ def iter_lines(doc):
                 keep = []
                 for s in spans:
                     if s["size"] < BODY_MIN or (s["flags"] & 1):
-                        continue  # chú thích chân trang / số chú thích
+                        # số mũ đơn vị đo ("125 cm" + "3" nhỏ) → giữ thành ³/²; còn lại là chú thích → bỏ
+                        sup = s["text"].strip()
+                        if keep and sup in SUPERSCRIPT and RE_UNIT_END.search(keep[-1][0]):
+                            t, b, i = keep[-1]
+                            keep[-1] = (t + SUPERSCRIPT[sup], b, i)
+                        continue
                     keep.append((nfc(s["text"]), bool(s["flags"] & 16), bool(s["flags"] & 2)))
                 if keep and "".join(k[0] for k in keep).strip():
                     yield line["bbox"][0], keep
