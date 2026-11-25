@@ -1,0 +1,13 @@
+# Cấu hình máy cá nhân
+.claude/
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+
+# File gốc tải về (PDF) không đưa lên repo
+*.pdf
+
+# Ảnh trung gian (đã chép vào app/data/img)
+tools/data/out/img/

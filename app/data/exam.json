@@ -1,0 +1,25 @@
+{
+  "default": "B-2025",
+  "structures": [
+    {
+      "id": "B-2025",
+      "label": "Hạng B — hiện hành (đến 28/02/2027)",
+      "note": "30 câu chọn ngẫu nhiên từ bộ 600 câu (Công văn 2262/CSGT-P5): 1 câu tình huống mất an toàn giao thông nghiêm trọng (điểm liệt), 8 câu quy định chung và quy tắc, 1 câu văn hoá – đạo đức, 1 câu kỹ thuật lái, 1 câu cấu tạo – sửa chữa, 9 câu báo hiệu, 9 câu sa hình. Làm trong 20 phút, đạt khi đúng từ 27 câu và không sai câu điểm liệt.",
+      "count": 30,
+      "minutes": 20,
+      "passScore": 27,
+      "criticalCount": 1,
+      "perChapter": { "1": 8, "2": 1, "3": 1, "4": 1, "5": 9, "6": 9 }
+    },
+    {
+      "id": "B-2027",
+      "label": "Hạng B — từ 01/3/2027",
+      "note": "Theo Thông tư 108/2026/TT-BCA: 50 câu, 33 phút, đạt khi đúng từ 45 câu. Cách phân bổ câu hỏi theo chương chưa có trong các nguồn đã đối chiếu, nên app chọn ngẫu nhiên trong toàn bộ 600 câu (vẫn có 1 câu điểm liệt). Một số nguồn ghi 30 phút thay vì 33 phút — cần đối chiếu Phụ lục III của Thông tư.",
+      "count": 50,
+      "minutes": 33,
+      "passScore": 45,
+      "criticalCount": 1,
+      "perChapter": null
+    }
+  ]
+}

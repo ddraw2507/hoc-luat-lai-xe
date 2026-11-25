@@ -1,0 +1,140 @@
+{
+  "_note": "Mục lục theo khoá 'Pháp Luật Giao thông Đường Bộ' của cơ sở đào tạo (99 slide; slide trùng tiêu đề được gộp thành 1 bài). 'match' = tên Điều trong văn bản nguồn dùng để lấy nội dung.",
+  "parts": [
+    {
+      "id": "luat",
+      "title": "Luật Trật tự, an toàn giao thông đường bộ",
+      "source": "Luật 36/2024/QH15, bản hợp nhất 55/VBHN-VPQH",
+      "groups": [
+        { "title": "Chương 1. Quy định chung", "lessons": [
+          ["1.1", "Phạm vi điều chỉnh"],
+          ["1.2", "Giải thích từ ngữ"],
+          ["1.3", "Nguyên tắc bảo đảm trật tự, an toàn giao thông đường bộ"],
+          ["1.4", "Chính sách của Nhà nước về trật tự, an toàn giao thông đường bộ"],
+          ["1.5", "Các hành vi bị nghiêm cấm"]
+        ]},
+        { "title": "Chương 2. Quy tắc giao thông đường bộ", "lessons": [
+          ["2.1", "Quy tắc chung"],
+          ["2.2", "Chấp hành báo hiệu đường bộ"],
+          ["2.3", "Chấp hành quy định về tốc độ và khoảng cách giữa các xe"],
+          ["2.4", "Sử dụng làn đường"],
+          ["2.5", "Vượt xe và nhường đường cho xe xin vượt"],
+          ["2.6", "Chuyển hướng xe"],
+          ["2.7", "Lùi xe"],
+          ["2.8", "Tránh xe đi ngược chiều"],
+          ["2.9", "Dừng xe, đỗ xe"],
+          ["2.10", "Mở cửa xe"],
+          ["2.11", "Sử dụng đèn"],
+          ["2.12", "Sử dụng tín hiệu còi"],
+          ["2.13", "Nhường đường tại nơi đường giao nhau"],
+          ["2.14", "Qua phà, qua cầu phao"],
+          ["2.15", "Giao thông tại đường ngang, cầu chung đường sắt"],
+          ["2.16", "Giao thông trên đường cao tốc"],
+          ["2.17", "Giao thông trong hầm đường bộ"],
+          ["2.18", "Xe ưu tiên"],
+          ["2.19", "Trường hợp chở người trên xe ô tô chở hàng"],
+          ["2.20", "Xe kéo xe, xe kéo rơ moóc và xe ô tô đầu kéo kéo sơ mi rơ moóc"]
+        ]},
+        { "title": "Chương 3. Phương tiện tham gia giao thông đường bộ", "lessons": [
+          ["3.1", "Điều kiện xe ô tô tham gia giao thông đường bộ"],
+          ["3.2", "Biển số xe"],
+          ["3.3", "Đấu giá biển số xe"],
+          ["3.4", "Quyền và nghĩa vụ của người trúng đấu giá biển số xe"],
+          ["3.5", "Cấp, thu hồi chứng nhận đăng ký xe và biển số xe cơ giới, xe máy chuyên dùng tham gia giao thông đường bộ"],
+          ["3.6", "Niên hạn sử dụng của xe cơ giới"],
+          ["3.7", "Bảo đảm an toàn kỹ thuật và bảo vệ môi trường của xe cơ giới, xe máy chuyên dùng tham gia giao thông đường bộ"],
+          ["3.8", "Bảo đảm trật tự, an toàn giao thông đường bộ đối với xe ô tô vận chuyển hành khách"],
+          ["3.9", "Bảo đảm trật tự, an toàn giao thông đường bộ đối với xe ô tô chở trẻ em mầm non, học sinh"],
+          ["3.10", "Bảo đảm trật tự, an toàn giao thông đường bộ đối với xe ô tô vận chuyển hàng hóa"],
+          ["3.11", "Bảo đảm trật tự, an toàn giao thông đường bộ đối với phương tiện giao thông đường bộ vận chuyển động vật sống, thực phẩm tươi sống"],
+          ["3.12", "Bảo đảm trật tự, an toàn giao thông đường bộ đối với phương tiện giao thông đường bộ vận chuyển hàng hoá nguy hiểm"],
+          ["3.13", "Bảo đảm trật tự, an toàn giao thông đường bộ đối với xe quá khổ giới hạn, xe quá tải trọng, xe bánh xích lưu hành trên đường bộ"],
+          ["3.14", "Bảo đảm trật tự, an toàn giao thông đường bộ đối với xe vận chuyển hàng siêu trường, siêu trọng"],
+          ["3.15", "Bảo đảm trật tự, an toàn giao thông đường bộ đối với xe cứu hộ giao thông đường bộ"]
+        ]},
+        { "title": "Chương 4. Người điều khiển phương tiện", "lessons": [
+          ["4.1", "Điều kiện của người điều khiển phương tiện tham gia giao thông đường bộ"],
+          ["4.2", "Giấy phép lái xe"],
+          ["4.3", "Điểm của giấy phép lái xe"],
+          ["4.4", "Tuổi, sức khỏe của người điều khiển phương tiện tham gia giao thông đường bộ"],
+          ["4.5", "Đào tạo lái xe"],
+          ["4.6", "Sát hạch lái xe"],
+          ["4.7", "Cấp, đổi, cấp lại và thu hồi giấy phép lái xe"],
+          ["4.8", "Thời gian làm việc của người lái xe ô tô kinh doanh vận tải và vận tải nội bộ"]
+        ]}
+      ]
+    },
+    {
+      "id": "baohieu",
+      "title": "Báo hiệu đường bộ",
+      "source": "QCVN 41:2024/BGTVT; tốc độ – khoảng cách: Thông tư 38/2024/TT-BGTVT",
+      "groups": [
+        { "title": "Chương I. Quy định chung", "lessons": [
+          ["1.1", "Khái niệm hệ thống báo hiệu đường bộ"],
+          ["1.2", "Thứ tự hiệu lực của hệ thống báo hiệu"],
+          ["1.3", "Thứ tự đường ưu tiên"]
+        ]},
+        { "title": "Chương II. Hiệu lệnh điều khiển giao thông", "lessons": [
+          ["2.1", "Hiệu lệnh của người điều khiển giao thông"],
+          ["2.2", "Hiệu lệnh của tín hiệu đèn"]
+        ]},
+        { "title": "Chương III. Biển báo hiệu", "lessons": [
+          ["3.1", "Phân nhóm và hiệu lực của biển báo hiệu"],
+          ["3.2", "Biển báo cấm"],
+          ["3.3", "Biển báo nguy hiểm và cảnh báo"],
+          ["3.4", "Biển báo hiệu lệnh"],
+          ["3.5", "Biển báo chỉ dẫn"],
+          ["3.6", "Biển báo phụ, biển viết bằng chữ"]
+        ]},
+        { "title": "Chương IV. Vạch kẻ đường và báo hiệu khác", "lessons": [
+          ["4.1", "Vạch kẻ đường"],
+          ["4.2", "Cọc tiêu hoặc tường bảo vệ và hàng rào chắn"],
+          ["4.3", "Cột kilômét"],
+          ["4.4", "Mốc lộ giới"],
+          ["4.5", "Gương cầu lồi và dải phân cách tôn sóng"],
+          ["4.6", "Báo hiệu trên đường cao tốc"],
+          ["4.7", "Báo hiệu cấm đi lại"]
+        ]},
+        { "title": "Chương V. Tốc độ và khoảng cách", "lessons": [
+          ["5.1", "Quy định về tốc độ của phương tiện tham gia giao thông đường bộ"],
+          ["5.2", "Khoảng cách an toàn giữa hai xe"]
+        ]}
+      ]
+    },
+    {
+      "id": "xuly",
+      "title": "Xử lý vi phạm và vận tải",
+      "source": "Bộ luật Hình sự; Nghị định 168/2024/NĐ-CP; pháp luật về vận tải đường bộ",
+      "groups": [
+        { "title": "Các phần V – VII", "lessons": [
+          ["V", "Luật Hình sự về nhóm tội phạm khi tham gia giao thông"],
+          ["VI", "Xử lý vi phạm hành chính về trật tự, an toàn giao thông đường bộ"],
+          ["VII", "Xếp hàng hoá trên xe ô tô và pháp luật về vận tải đường bộ"]
+        ]}
+      ]
+    },
+    {
+      "id": "sahinh",
+      "title": "Sa hình",
+      "source": "Luật 36/2024/QH15 và QCVN 41:2024/BGTVT",
+      "groups": [
+        { "title": "1. Nhận biết sa hình", "lessons": [
+          ["1.1", "Đặc điểm của đường sá"],
+          ["1.2", "Đặc điểm của xe"],
+          ["1.3", "Vị trí của xe trên sa hình"],
+          ["1.4", "Hướng đi của xe"],
+          ["1.5", "Các loại báo hiệu đường bộ trên sa hình"]
+        ]},
+        { "title": "2. Thứ tự đi qua nơi giao nhau", "lessons": [
+          ["2.1", "Xe có đường riêng"],
+          ["2.2", "Quyền bình đẳng xe vào nơi đường giao nhau"],
+          ["2.3", "Xe ưu tiên theo Luật Trật tự, an toàn giao thông đường bộ"],
+          ["2.4", "Xe ở trên đường ưu tiên"],
+          ["2.5", "Xe có quyền ưu tiên bên phải"],
+          ["2.6", "Quyền ưu tiên đối với xe đi cùng đoàn, cùng hướng"],
+          ["2.7", "Xe phải nhường đường khi rẽ trái"]
+        ]}
+      ]
+    }
+  ]
+}

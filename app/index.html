@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Học Luật Lái Xe</title>
+<meta name="theme-color" content="#1c5fbf" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101722" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Luật Lái Xe">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#/">Học Luật Lái Xe</a>
+  <a class="gear" href="#/cai-dat" aria-label="Cài đặt">⚙️</a>
+</header>
+<main id="view" tabindex="-1"></main>
+<nav class="tabbar" aria-label="Điều hướng chính">
+  <a href="#/" data-tab="home"><span class="ico">🏠</span><span>Trang chủ</span></a>
+  <a href="#/hoc" data-tab="hoc"><span class="ico">📖</span><span>Học</span></a>
+  <a href="#/on" data-tab="on"><span class="ico">✏️</span><span>Ôn tập</span></a>
+  <a href="#/thi" data-tab="thi"><span class="ico">⏱️</span><span>Thi thử</span></a>
+  <a href="#/thong-ke" data-tab="tk"><span class="ico">📊</span><span>Thống kê</span></a>
+</nav>
+<div id="toast" class="toast" hidden role="status"></div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
