@@ -1,4 +1,6 @@
 # Kiểm tra rồi đưa thư mục app/ lên GitHub Pages mỗi khi đẩy lên nhánh main.
+# Tách 2 job như workflow mẫu của GitHub: job deploy chạy sau khi gói "github-pages" đã tải lên xong
+# (deploy ngay trong cùng job đôi khi không thấy gói vừa tải: "No artifacts named github-pages").
 name: Deploy Pages
 
 on:
@@ -13,14 +15,11 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -34,5 +33,13 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: app
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - id: deployment
         uses: actions/deploy-pages@v4
