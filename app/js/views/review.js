@@ -4,6 +4,7 @@ import { loadData } from '../data.js';
 import * as store from '../store.js';
 import { go } from '../router.js';
 import { questionCard, gridButtons } from './question.js';
+import { recordAnswer } from '../games/progress.js';
 
 function modeIds(data, mode) {
   const s = store.get();
@@ -96,7 +97,7 @@ export async function reviewRun(el, { mode }) {
       onPick: (i) => {
         if (S.answered[q.id] !== undefined) return;
         S.answered[q.id] = i;
-        store.recordAnswer(q.id, i === q.answer);
+        recordAnswer(q.id, i === q.answer, i === q.answer ? 2 : 0);
         draw();
         window.scrollTo(0, document.body.scrollHeight);
       } }));

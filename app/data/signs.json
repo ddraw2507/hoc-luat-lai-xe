@@ -1,0 +1,110 @@
+{
+ "source": "Chọn từ chương V bộ 600 câu (câu hỏi một biển – đáp án là ý nghĩa)",
+ "pairs": [
+  {
+   "id": 334,
+   "image": "img/q334.webp",
+   "meaning": "Đường cấm súc vật vận tải hàng hóa hoặc hành khách dù kéo xe hay chở trên lưng đi qua."
+  },
+  {
+   "id": 335,
+   "image": "img/q335.webp",
+   "meaning": "Tốc độ tối đa cho phép về ban đêm cho các phương tiện là 70 km/h."
+  },
+  {
+   "id": 346,
+   "image": "img/q346.webp",
+   "meaning": "Cấm các loại xe cơ giới và xe mô tô (trừ xe ưu tiên theo luật định) đi về bên trái và bên phải."
+  },
+  {
+   "id": 347,
+   "image": "img/q347.webp",
+   "meaning": "Chiều dài đoạn đường cấm bóp còi từ nơi đặt biển."
+  },
+  {
+   "id": 354,
+   "image": "img/q354.webp",
+   "meaning": "Cấm dừng và đỗ xe theo hướng bên phải."
+  },
+  {
+   "id": 358,
+   "image": "img/q358.webp",
+   "meaning": "Cấm xe ô tô khách."
+  },
+  {
+   "id": 359,
+   "image": "img/q359.webp",
+   "meaning": "Hạn chế chiều ngang của xe và hàng."
+  },
+  {
+   "id": 364,
+   "image": "img/q364.webp",
+   "meaning": "Tốc độ tối đa các xe cơ giới được phép chạy."
+  },
+  {
+   "id": 366,
+   "image": "img/q366.webp",
+   "meaning": "Báo hiệu tốc độ tối thiểu cho phép các xe cơ giới chạy."
+  },
+  {
+   "id": 379,
+   "image": "img/q379.webp",
+   "meaning": "Để báo trước sắp đến vị trí đường sắt giao không vuông góc với đường bộ, không có người gác và không có rào chắn."
+  },
+  {
+   "id": 417,
+   "image": "img/q417.webp",
+   "meaning": "Chỗ ngoặt nguy hiểm có nguy cơ lật xe bên phải khi đường cong vòng sang trái."
+  },
+  {
+   "id": 418,
+   "image": "img/q418.webp",
+   "meaning": "Báo trước sắp đến bến phà."
+  },
+  {
+   "id": 419,
+   "image": "img/q419.webp",
+   "meaning": "Báo hiệu đường có ổ gà, lồi lõm."
+  },
+  {
+   "id": 420,
+   "image": "img/q420.webp",
+   "meaning": "Báo hiệu đường có gồ giảm tốc phía trước."
+  },
+  {
+   "id": 421,
+   "image": "img/q421.webp",
+   "meaning": "Để cảnh báo những đoạn nền đường yếu, đoạn đường đang theo dõi lún mà việc vận hành xe ở tốc độ cao có thể gây nguy hiểm."
+  },
+  {
+   "id": 423,
+   "image": "img/q423.webp",
+   "meaning": "Để báo trước nơi có kết cấu mặt đường rời rạc, khi phương tiện đi qua, làm cho các viên đá, sỏi văng lên gây nguy hiểm và mất an toàn cho người và phương tiện tham gia giao thông."
+  },
+  {
+   "id": 424,
+   "image": "img/q424.webp",
+   "meaning": "Đi chậm, quan sát và dừng lại nếu gặp gia súc trên đường."
+  },
+  {
+   "id": 425,
+   "image": "img/q425.webp",
+   "meaning": "Báo hiệu khu vực có đường dây điện cắt ngang phía trên tuyến đường."
+  },
+  {
+   "id": 453,
+   "image": "img/q453.webp",
+   "meaning": "Đỗ từ 1/2 thân xe trở lên trên hè phố."
+  },
+  {
+   "id": 454,
+   "image": "img/q454.webp",
+   "meaning": "Phải giảm tốc độ đến mức an toàn và không được vượt khi đi qua khu vực này."
+  },
+  {
+   "id": 468,
+   "image": "img/q468.webp",
+   "meaning": "Xăng dầu, ăn uống, thông tin, sửa chữa xe."
+  }
+ ]
+}

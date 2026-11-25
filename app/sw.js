@@ -1,6 +1,6 @@
 // Service worker: precache app shell + 3 file JSON + mọi ảnh liệt kê trong questions.json (đọc lúc install).
 // Đổi CACHE_VERSION mỗi khi thay code hoặc dữ liệu để máy người dùng tải bản mới.
-const CACHE_VERSION = 'v5';
+const CACHE_VERSION = 'v6';
 const CACHE = 'hlx-' + CACHE_VERSION;
 
 const SHELL = [
@@ -18,6 +18,9 @@ const SHELL = [
   'js/util.js',
   'js/exam.js',
   'js/tts.js',
+  'js/games/logic.js',
+  'js/games/fx.js',
+  'js/games/progress.js',
   'js/views/home.js',
   'js/views/learn.js',
   'js/views/question.js',
@@ -25,9 +28,17 @@ const SHELL = [
   'js/views/exam-view.js',
   'js/views/stats.js',
   'js/views/settings.js',
+  'js/views/games/ui.js',
+  'js/views/games/hub.js',
+  'js/views/games/journey.js',
+  'js/views/games/blitz.js',
+  'js/views/games/survival.js',
+  'js/views/games/truefalse.js',
+  'js/views/games/signs.js',
   'data/questions.json',
   'data/lessons.json',
   'data/exam.json',
+  'data/signs.json',
 ];
 
 self.addEventListener('install', (event) => {

@@ -22,3 +22,15 @@ export function currentStructure(data, settings) {
   const id = settings.examId || data.exam.default;
   return data.exam.structures.find((s) => s.id === id) || data.exam.structures[0];
 }
+
+/** Dữ liệu đã tải (hoặc null nếu chưa) — để module logic nền (huy hiệu) dùng mà không phải async. */
+export function peekData() { return cache; }
+
+let signsCache = null;
+/** Cặp biển báo cho trò Ghép biển báo: [{id, image, meaning}]. */
+export async function loadSigns() {
+  if (signsCache) return signsCache;
+  const j = await getJson('data/signs.json');
+  signsCache = j.pairs;
+  return signsCache;
+}

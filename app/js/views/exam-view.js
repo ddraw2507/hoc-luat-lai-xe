@@ -5,6 +5,7 @@ import * as store from '../store.js';
 import { go } from '../router.js';
 import { generateExam, gradeExam } from '../exam.js';
 import { questionCard, gridButtons } from './question.js';
+import { recordAnswer, finishExam } from '../games/progress.js';
 
 const rule = (s) => `${s.count} câu · ${s.minutes} phút · đúng ≥ ${s.passScore} · ${s.criticalCount ? 'không sai câu điểm liệt' : 'không có câu điểm liệt'}`;
 
@@ -77,19 +78,15 @@ export async function examRun(el) {
     clearInterval(timer);
     const grade = gradeExam(qs, ex.answers, struct);
     const now = Date.now();
+    // ghi từng câu (stats + chuỗi ngày) qua chỗ dùng chung; kiểm huy hiệu một lần sau khi lưu lịch sử
+    for (const q of qs) if (ex.answers[q.id] !== undefined) recordAnswer(q.id, ex.answers[q.id] === q.answer, 0, false);
     store.update((s) => {
-      for (const q of qs) if (ex.answers[q.id] !== undefined) {
-        const st = s.stats[q.id] || { right: 0, wrong: 0, last: null, ts: 0 };
-        if (ex.answers[q.id] === q.answer) st.right++; else st.wrong++;
-        st.last = ex.answers[q.id] === q.answer ? 'right' : 'wrong';
-        st.ts = now;
-        s.stats[q.id] = st;
-      }
       s.history.unshift({ ts: now, structId: struct.id, label: struct.label, score: grade.correct, total: grade.total, passed: grade.passed });
       s.history = s.history.slice(0, 50);
       s.lastResult = { ts: now, structId: struct.id, label: struct.label, ids: ex.ids, answers: ex.answers, grade, passScore: struct.passScore };
       s.exam = null;
     });
+    finishExam(grade.passed);
     go('/thi/ket-qua');
   };
 

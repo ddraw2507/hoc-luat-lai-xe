@@ -79,6 +79,28 @@ if (e) {
   }
 }
 
+// --- signs.json (Ghép biển báo) ---
+const sg = json('data/signs.json');
+if (sg) {
+  if (typeof sg.source !== 'string' || !sg.source) err('signs: thiếu source');
+  if (!Array.isArray(sg.pairs) || sg.pairs.length < 5) err('signs: cần mảng pairs (≥ 5 cặp)');
+  else {
+    const qids = new Set(q ? q.questions.map((x) => x.id) : []);
+    const seen = new Set();
+    for (const p of sg.pairs) {
+      const w = `signs ${p && p.id}`;
+      if (!p || !Number.isInteger(p.id) || seen.has(p.id)) { err(`${w}: id sai/trùng`); continue; }
+      seen.add(p.id);
+      if (qids.size && !qids.has(p.id)) err(`${w}: không có câu hỏi tương ứng`);
+      if (typeof p.meaning !== 'string' || !p.meaning.trim()) err(`${w}: thiếu meaning`);
+      if (typeof p.image !== 'string' || !p.image) err(`${w}: thiếu image`);
+      else if (p.image.startsWith('/') || /^[a-z]+:/i.test(p.image)) err(`${w}: image phải là đường dẫn tương đối`);
+      else if (!exists('data/' + p.image)) err(`${w}: ảnh không tồn tại: data/${p.image}`);
+    }
+    if (new Set(sg.pairs.map((p) => p.meaning)).size !== sg.pairs.length) err('signs: có ý nghĩa trùng nhau (ghép sẽ mơ hồ)');
+  }
+}
+
 // --- precache (đọc SHELL từ sw.js) + ảnh từ questions.json ---
 const sw = rd('sw.js');
 const shellMatch = sw.match(/const SHELL = \[([\s\S]*?)\];/);
@@ -96,6 +118,8 @@ else {
   for (const f of ['js', 'css', 'icons'].flatMap((d) => walk(d))) {
     if (!shell.includes(f)) err(`sw.js SHELL thiếu file: ${f}`);
   }
+  for (const f of ['data/signs.json', 'data/questions.json', 'data/lessons.json', 'data/exam.json']) if (!shell.includes(f)) err(`sw.js SHELL thiếu ${f}`);
+  if (!/CACHE_VERSION = 'v(\d+)'/.test(sw) || Number(sw.match(/CACHE_VERSION = 'v(\d+)'/)[1]) < 6) err('sw.js: CACHE_VERSION phải >= v6');
   if (!sw.includes("'data/questions.json'") || !sw.includes('q.image')) err('sw.js: phải dựng danh sách ảnh từ questions.json');
   var shellCount = shell.length;
 }
@@ -129,4 +153,4 @@ if (mf) {
 if (!exists('icons/apple-touch-icon.png')) err('thiếu apple-touch-icon.png');
 
 if (errors.length) { console.error('LỖI (' + errors.length + '):\n- ' + errors.join('\n- ')); process.exit(1); }
-console.log(`OK: ${q.questions.length} câu, ${q.questions.filter((x) => x.image).length} ảnh, ${shellCount} file shell, ${files.length} file đã quét đường dẫn.`);
+console.log(`OK: ${q.questions.length} câu, ${sg.pairs.length} cặp biển báo, ${q.questions.filter((x) => x.image).length} ảnh, ${shellCount} file shell, ${files.length} file đã quét đường dẫn.`);

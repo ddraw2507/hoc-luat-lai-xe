@@ -6,6 +6,12 @@ import { reviewMenu, reviewRun } from './views/review.js';
 import { examMenu, examRun, examResult } from './views/exam-view.js';
 import { stats } from './views/stats.js';
 import { settings, applyFont } from './views/settings.js';
+import { play, badgesView } from './views/games/hub.js';
+import { journeyMap, stageRun } from './views/games/journey.js';
+import { blitz } from './views/games/blitz.js';
+import { survival } from './views/games/survival.js';
+import { trueFalse } from './views/games/truefalse.js';
+import { signsGame } from './views/games/signs.js';
 
 applyFont();
 
@@ -17,7 +23,15 @@ route('/on/:mode', reviewRun, 'on');
 route('/thi', examMenu, 'thi');
 route('/thi/lam', examRun, 'thi');
 route('/thi/ket-qua', examResult, 'thi');
-route('/thong-ke', stats, 'tk');
+route('/choi', play, 'choi');
+route('/choi/hanh-trinh', journeyMap, 'choi');
+route('/choi/hanh-trinh/:id', stageRun, 'choi');
+route('/choi/chop-nhoang', blitz, 'choi');
+route('/choi/sinh-ton', survival, 'choi');
+route('/choi/dung-sai', trueFalse, 'choi');
+route('/choi/ghep-bien', signsGame, 'choi');
+route('/choi/huy-hieu', badgesView, 'choi');
+route('/thong-ke', stats, '');
 route('/cai-dat', settings, '');
 
 document.addEventListener('routechange', (e) => {

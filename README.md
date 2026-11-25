@@ -11,6 +11,8 @@ App học lý thuyết và ôn thi GPLX hạng B, cài lên màn hình chính iP
 | `app/data/questions.json` | 600 câu (Cục CSGT, CV 2262/CSGT-P5) — sinh bởi `tools/data/` |
 | `app/data/lessons.json` | 83 bài; 48 bài phần Luật có nội dung (Luật 36/2024, VBHN 55/VBHN-VPQH) |
 | `app/data/exam.json` | Cấu trúc đề: hạng B hiện hành (30 câu/20'/≥27) và từ 01/3/2027 (50/33'/≥45) |
+| `app/data/signs.json` | 21 cặp biển báo ↔ ý nghĩa cho trò Ghép biển báo — sinh bởi `tools/data/build_signs.py` |
+| `app/js/games/`, `app/js/views/games/` | Phần trò chơi (đặc tả: [SPEC-GAMES.md](SPEC-GAMES.md)): Hành trình, Chớp nhoáng, Sinh tồn, Đúng hay Sai, Ghép biển báo; XP, chuỗi ngày, huy hiệu |
 | `tools/data/` | Script tách dữ liệu từ PDF gốc |
 | `tools/app/` | Test, kiểm tra app, server phát triển |
 
@@ -23,6 +25,7 @@ python -E -P tools/data/law_parse.py <55-vbhn-vpqh.pdf> tools/data/out/law_artic
 python -E -P tools/data/build_lessons.py
 python -E -P tools/data/q600_parse.py "<Bo 600 cau hoi ... .pdf>" tools/data/out
 python -E -P tools/data/build_questions.py
+python -E -P tools/data/build_signs.py
 Copy-Item tools/data/out/lessons.json, tools/data/out/exam.json app/data/
 ```
 

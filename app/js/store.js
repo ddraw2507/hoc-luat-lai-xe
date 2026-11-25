@@ -1,6 +1,19 @@
 // Lưu tiến độ trong localStorage, một khoá duy nhất `hlx.v1`. Hỏng/không có storage thì chạy trong bộ nhớ.
 const KEY = 'hlx.v1';
 
+function defaultGame() {
+  return {
+    xp: 0,
+    streak: { days: 0, last: '' },   // last = 'YYYY-MM-DD' theo giờ máy
+    best: { chop: 0, sinhTon: 0, dungSai: 0, ghepBien: 0 },   // ghepBien = giây nhanh nhất (0 = chưa có)
+    bestCombo: 0,
+    stages: {},    // stageId -> số sao 0..3 cao nhất
+    badges: {},    // badgeId -> ts mở khoá
+    sound: true,
+    perfectSigns: false,   // đã từng ghép biển báo không sai lần nào (điều kiện huy hiệu Mắt diều hâu)
+  };
+}
+
 export function defaults() {
   return {
     v: 1,
@@ -12,6 +25,7 @@ export function defaults() {
     exam: null,    // bài thi đang làm
     lastResult: null,
     history: [],   // 50 lần thi gần nhất
+    game: defaultGame(),
   };
 }
 
@@ -28,9 +42,40 @@ export function normalize(obj) {
   for (const k of ['examDate', 'voice']) if (typeof st[k] !== 'string') st[k] = '';
   if (st.examId !== null && typeof st.examId !== 'string') st.examId = null;
   for (const k of ['learned', 'scroll', 'stats', 'stars']) if (!o[k] || typeof o[k] !== 'object') o[k] = {};
+  o.game = normalizeGame(obj.game);
   if (!Array.isArray(o.history)) o.history = [];
-  o.history = o.history.slice(0, 50);
+  o.history = o.history.filter(isObj).slice(0, 50);
+  // stats[id] phải là object {right, wrong, last, ts}; mục hỏng (vd nhập tay) bị bỏ để recordAnswer không lỗi
+  for (const [id, v] of Object.entries(o.stats)) {
+    if (!isObj(v)) { delete o.stats[id]; continue; }
+    v.right = Math.floor(nonNeg(v.right));
+    v.wrong = Math.floor(nonNeg(v.wrong));
+    if (v.last !== 'right' && v.last !== 'wrong') v.last = null;
+  }
   return o;
+}
+
+const isObj = (v) => v && typeof v === 'object' && !Array.isArray(v);
+const nonNeg = (v) => (v !== null && v !== '' && typeof v !== 'boolean' && Number.isFinite(Number(v)) ? Math.max(0, Number(v)) : 0);
+
+function normalizeGame(g) {
+  const d = defaultGame();
+  if (!isObj(g)) return d;
+  const st = isObj(g.streak) ? g.streak : {};
+  const b = isObj(g.best) ? g.best : {};
+  const stages = {};
+  if (isObj(g.stages)) for (const [k, v] of Object.entries(g.stages)) stages[k] = Math.min(3, Math.floor(nonNeg(v)));
+  const badges = {};
+  if (isObj(g.badges)) for (const [k, v] of Object.entries(g.badges)) badges[k] = nonNeg(v) || 1;
+  return {
+    xp: Math.floor(nonNeg(g.xp)),
+    streak: { days: Math.floor(nonNeg(st.days)), last: typeof st.last === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(st.last) ? st.last : '' },
+    best: { chop: Math.floor(nonNeg(b.chop)), sinhTon: Math.floor(nonNeg(b.sinhTon)), dungSai: Math.floor(nonNeg(b.dungSai)), ghepBien: nonNeg(b.ghepBien) },
+    bestCombo: Math.floor(nonNeg(g.bestCombo)),
+    stages, badges,
+    sound: typeof g.sound === 'boolean' ? g.sound : d.sound,
+    perfectSigns: g.perfectSigns === true,
+  };
 }
 
 function load() {
@@ -56,13 +101,3 @@ export function replaceAll(obj) { state = normalize(obj); save(); }
 export function reset() { state = defaults(); try { localStorage.removeItem(KEY); } catch { /* */ } }
 
 export function exportJson() { return JSON.stringify(state, null, 1); }
-
-export function recordAnswer(id, isRight) {
-  update((s) => {
-    const st = s.stats[id] || { right: 0, wrong: 0, last: null, ts: 0 };
-    if (isRight) st.right++; else st.wrong++;
-    st.last = isRight ? 'right' : 'wrong';
-    st.ts = Date.now();
-    s.stats[id] = st;
-  });
-}

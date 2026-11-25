@@ -2,6 +2,7 @@ import { h, toast, confirmBox } from '../util.js';
 import { loadData, currentStructure } from '../data.js';
 import * as store from '../store.js';
 import * as tts from '../tts.js';
+import { setSound } from '../games/progress.js';
 
 export function applyFont() {
   document.documentElement.style.setProperty('--fs', store.get().settings.fontSize + 'px');
@@ -33,6 +34,7 @@ export async function settings(el) {
   const offVoices = tts.onVoices(fillVoices);
   const testBtn = h('button', { class: 'btn small', type: 'button', onclick: () => tts.speak('Xin chào, đây là giọng đọc thử.', { rate: store.get().settings.rate, voiceURI: store.get().settings.voice }) }, '🔊 Đọc thử');
 
+  const soundIn = h('input', { type: 'checkbox', checked: s.game.sound ? true : null, onchange: (e) => setSound(e.target.checked) });
   const box = h('textarea', { rows: '4', placeholder: 'Dán JSON tiến độ vào đây rồi bấm Nhập', 'aria-label': 'JSON tiến độ' });
   const exportBtn = h('button', { class: 'btn', onclick: () => {
     const blob = new Blob([store.exportJson()], { type: 'application/json' });
@@ -60,7 +62,8 @@ export async function settings(el) {
       field('Ngày thi dự kiến', dateIn),
       field(['Cỡ chữ ', fsLbl], fs),
       field(['Tốc độ đọc ', rateLbl], rate),
-      field('Giọng đọc', voiceSel, null), voiceHint, testBtn),
+      field('Giọng đọc', voiceSel, null), voiceHint, testBtn,
+      h('label', { class: 'field switch' }, soundIn, h('span', {}, 'Âm thanh trong trò chơi'))),
     h('h2', {}, 'Tiến độ'),
     h('div', { class: 'card' }, h('div', { class: 'row wrap' }, exportBtn, copyBtn), box, h('div', { class: 'row' }, importBtn), h('hr'), resetBtn),
     h('h2', {}, 'Giới thiệu'),

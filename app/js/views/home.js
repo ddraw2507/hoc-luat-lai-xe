@@ -1,6 +1,8 @@
 import { h } from '../util.js';
 import { loadData, currentStructure } from '../data.js';
 import * as store from '../store.js';
+import { activeStreak, dayKey, buildStages, nextStage } from '../games/logic.js';
+import { levelCard } from './games/hub.js';
 
 export function daysUntil(dateStr, now = new Date()) {
   if (!dateStr) return null;
@@ -30,7 +32,13 @@ export async function home(el) {
         : days === 0 ? h('div', { class: 'big' }, 'Hôm nay thi!') : h('div', {}, 'Ngày thi dự kiến đã qua')));
   }
 
-  el.append(h('div', { class: 'card' },
+  const streak = activeStreak(s.game.streak, dayKey());
+  const resume = nextStage(buildStages(data.questions), s.game.stages);
+  el.append(levelCard(s.game),
+    h('div', { class: 'row' },
+      h('div', { class: 'card center streakcard' }, h('b', {}, '🔥 ' + streak + ' ngày'), h('div', { class: 'sub' }, streak ? 'liên tiếp, giữ nhịp nhé' : 'Làm một câu để bắt đầu chuỗi')),
+      h('a', { class: 'btn primary homeplay', href: resume ? '#/choi/hanh-trinh/' + resume.id : '#/choi' }, '🎮 Chơi tiếp')),
+    h('div', { class: 'card' },
     h('b', {}, struct.label),
     h('div', { class: 'sub' }, `${struct.count} câu · ${struct.minutes} phút · đúng ≥ ${struct.passScore} · không sai câu điểm liệt`)),
   h('div', { class: 'stats3' },
@@ -40,5 +48,6 @@ export async function home(el) {
   h('div', { class: 'quick' },
     h('a', { class: 'btn primary block', href: next ? '#/hoc/' + next.id : '#/hoc' }, next ? 'Học tiếp: ' + next.title : 'Học'),
     h('a', { class: 'btn block', href: '#/on/critical' }, 'Ôn câu điểm liệt'),
-    h('a', { class: 'btn block', href: '#/thi' }, 'Thi thử')));
+    h('a', { class: 'btn block', href: '#/thi' }, 'Thi thử')),
+  h('a', { class: 'card link', href: '#/thong-ke' }, h('div', {}, h('b', {}, '📊 Thống kê'), h('div', { class: 'sub' }, 'Tỷ lệ đúng theo chương và lịch sử thi thử')), h('span', { class: 'chev' }, '›')));
 }
